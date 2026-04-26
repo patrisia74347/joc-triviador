@@ -103,3 +103,18 @@ function verificaRaspuns(ales, corect, index) {
         update(roomRef, updateData);
     }, { onlyOnce: true });
 }
+// Această parte leagă butoanele de funcții chiar dacă folosim module
+document.addEventListener('DOMContentLoaded', () => {
+    const btnCreeaza = document.querySelector('button[onclick*="creeazaCamera"]');
+    const btnIntra = document.querySelector('button[onclick*="intraInCamera"]');
+
+    if(btnCreeaza) {
+        btnCreeaza.onclick = null; // ștergem vechea metodă
+        btnCreeaza.addEventListener('click', window.pregatesteCreare || window.creeazaCamera);
+    }
+    
+    if(btnIntra) {
+        btnIntra.onclick = null;
+        btnIntra.addEventListener('click', window.pregatesteJoin || window.intraInCamera);
+    }
+});
