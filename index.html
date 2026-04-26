@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia Battle Royale</title>
+    <link rel="stylesheet" href="style.css"> <style>
+        body { background: #0d0d1a; color: white; font-family: sans-serif; text-align: center; }
+        .btn { background: #7c3aed; color: white; padding: 10px 20px; border: none; cursor: pointer; margin: 5px; }
+        #game-container { margin-top: 50px; }
+    </style>
+</head>
+<body>
+    <h1>Trivia Battle Royale</h1>
+    <div id="setup">
+        <button class="btn" onclick="creeazaCamera()">Creează Cameră</button>
+        <p>Sau introdu codul camerei:</p>
+        <input type="text" id="roomCode" placeholder="Cod camera">
+        <button class="btn" onclick="intraInCamera()">Intră în Joc</button>
+    </div>
+
+    <div id="game-container" style="display:none;">
+        <h2 id="category-label"></h2>
+        <p id="question-text"></p>
+        <div id="answers"></div>
+        <p>Scorul tău: <span id="my-score">0</span></p>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
