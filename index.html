@@ -4,26 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trivia Battle Royale</title>
-    <link rel="stylesheet" href="style.css"> <style>
-        body { background: #0d0d1a; color: white; font-family: sans-serif; text-align: center; }
-        .btn { background: #7c3aed; color: white; padding: 10px 20px; border: none; cursor: pointer; margin: 5px; }
-        #game-container { margin-top: 50px; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Trivia Battle Royale</h1>
-    <div id="setup">
-        <button class="btn" onclick="creeazaCamera()">Creează Cameră</button>
-        <p>Sau introdu codul camerei:</p>
-        <input type="text" id="roomCode" placeholder="Cod camera">
-        <button class="btn" onclick="intraInCamera()">Intră în Joc</button>
-    </div>
+    <div id="app">
+        <div id="screen-start" class="screen">
+            <h1 class="logo">TRIVIA<span>Battle</span></h1>
+            <input type="text" id="player-name" placeholder="Numele tău..." maxlength="12">
+            <div class="actions">
+                <button onclick="pregatesteCreare()" class="btn-main">Creează Cameră</button>
+                <div class="divider">sau</div>
+                <input type="text" id="roomCode" placeholder="Cod cameră">
+                <button onclick="pregatesteJoin()" class="btn-sub">Intră în Joc</button>
+            </div>
+        </div>
 
-    <div id="game-container" style="display:none;">
-        <h2 id="category-label"></h2>
-        <p id="question-text"></p>
-        <div id="answers"></div>
-        <p>Scorul tău: <span id="my-score">0</span></p>
+        <div id="screen-lobby" class="screen" style="display:none;">
+            <h2>Cameră: <span id="display-room-code">----</span></h2>
+            <p id="waiting-msg">Așteptăm adversarul...</p>
+            <div id="category-selector" style="display:none;">
+                <h3>Alege 4 Categorii:</h3>
+                <div id="cat-grid"></div>
+                <button id="start-game-btn" disabled onclick="startMeci()" class="btn-main">ÎNCEPE MECIUL</button>
+            </div>
+        </div>
+
+        <div id="screen-game" class="screen" style="display:none;">
+            <div class="scoreboard">
+                <div class="player p1-box"><span id="name-p1">P1</span>: <span id="score-p1">0</span></div>
+                <div class="timer" id="timer">15</div>
+                <div class="player p2-box"><span id="name-p2">P2</span>: <span id="score-p2">0</span></div>
+            </div>
+            <div class="game-card">
+                <div id="category-badge">ISTORIE</div>
+                <h2 id="question-text">Întrebarea apare aici?</h2>
+                <div id="answers-grid"></div>
+            </div>
+        </div>
     </div>
 
     <script type="module" src="script.js"></script>
